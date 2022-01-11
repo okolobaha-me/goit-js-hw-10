@@ -11,7 +11,7 @@ const refs = {
   countryList: document.querySelector('.country-list'),
 };
 
-const check = countries => {
+const checkCountryListLength = countries => {
   if (!countries.length) {
     Notify.failure('Oops, there is no country with that name');
     return;
@@ -35,7 +35,7 @@ const onInputSearch = e => {
     refs.countryList.innerHTML = '';
     return;
   }
-  country.getCountriesList(e.target.value).then(check);
+  country.getCountriesList(e.target.value).then(checkCountryListLength);
 };
 
 const country = new Fetch();
