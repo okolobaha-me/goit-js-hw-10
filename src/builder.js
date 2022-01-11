@@ -1,20 +1,7 @@
 export class Builder {
   constructor() {}
 
-  static build(countryList) {
-    let listContent = [];
-
-    if (countryList.length > 1) {
-      for (const country of countryList) {
-        const countryParams = {
-          name: country.name.official,
-          flag: country.flags.svg,
-        };
-        listContent.push(this.createListOfCountries(countryParams));
-      }
-      return listContent.join('');
-    }
-
+  static buildOneCountry(countryList) {
     const country = countryList[0];
 
     const countryParams = {
@@ -26,6 +13,19 @@ export class Builder {
     };
 
     return this.createCountry(countryParams);
+  }
+
+  static buildCountryList(countryList) {
+    let listContent = [];
+
+    for (const country of countryList) {
+      const countryParams = {
+        name: country.name.official,
+        flag: country.flags.svg,
+      };
+      listContent.push(this.createListOfCountries(countryParams));
+    }
+    return listContent.join('');
   }
 
   static createCapitalsList(capital) {

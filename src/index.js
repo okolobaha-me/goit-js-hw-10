@@ -22,7 +22,12 @@ const check = countries => {
     return;
   }
 
-  refs.countryList.innerHTML = Builder.build(countries);
+  if (countries.length === 1) {
+    refs.countryList.innerHTML = Builder.buildOneCountry(countries);
+    return;
+  }
+
+  refs.countryList.innerHTML = Builder.buildCountryList(countries);
 };
 
 const onInputSearch = e => {
