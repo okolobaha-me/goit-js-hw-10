@@ -42,12 +42,14 @@ export class Builder {
   }
 
   static createLanguagesList(languages) {
-    const langList = [];
+    const langList = Object.values(languages);
+    const langListHtml = [];
 
-    for (const languagesKey in languages) {
-      langList.push(`<li class='country__item'>${languages[languagesKey]}</li>`);
+    for (const language of langList) {
+      langListHtml.push(`<li class='country__item'>${language}</li>`);
     }
-    return langList.join(``);
+
+    return langListHtml.join(``);
   }
 
   static createListOfCountries({ name, flag }) {
